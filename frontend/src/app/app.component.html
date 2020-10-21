@@ -1,1 +1,12 @@
 <h2>{{monthNames[date.getMonth()]}} {{date.getFullYear()}}</h2>
+<mwl-calendar-month-view [viewDate]="date" [events]="events" [cellTemplate]="customCellTemplate">
+</mwl-calendar-month-view>
+<ng-template #customCellTemplate let-day="day" let-locale="locale">
+  <div class="cal-cell-top">
+    <span class="cal-day-number">
+      {{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
+  </div>
+  <div *ngFor="let event of day.events; trackBy: trackByEventId; index as i">
+    {{event.title}}
+  </div>
+</ng-template>

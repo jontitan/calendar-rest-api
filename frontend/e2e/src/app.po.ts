@@ -8,4 +8,10 @@ export class AppPage {
   getTitleText(): Promise<string> {
     return element(by.css('h2')).getText() as Promise<string>;
   }
+
+  getFirstDay(): Promise<string> {
+    return element(by.cssContainingText('span.cal-day-number', "1"))
+    .element(by.xpath("../.."))
+    .getText() as Promise<string>;
+  }
 }

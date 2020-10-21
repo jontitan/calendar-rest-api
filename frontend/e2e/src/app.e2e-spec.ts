@@ -16,6 +16,10 @@ describe('Calendar App', () => {
     expect(page.getTitleText()).toEqual(`${monthNames[date.getMonth()]} ${date.getFullYear()}`);
   });
 
+  it('should display event summary', () => {
+    expect(page.getFirstDay()).toContain("10:00 AM Dentist");
+  });
+
   afterEach(async () => {
     // Assert that there are no errors emitted from the browser
     const logs = await browser.manage().logs().get(logging.Type.BROWSER);
